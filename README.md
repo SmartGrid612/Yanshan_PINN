@@ -1,19 +1,32 @@
-## Dataset Availability
+## Dataset Preparation
 
-Due to GitHub file size limitations, the complete microgrid datasets used in this project are not included in this repository.
+The original datasets are not included in this repository due to file size limitations and repository management considerations.
 
-To reproduce the experiments, please create the following directory structure before running the code:
+Before running the project, please manually create the following directory structure:
 
+```text
 project/
-
+│
 ├── data/
-
 │   ├── normal/
+│   │   ├── MG_Normal_V_abc.csv
+│   │   ├── MG_Normal_I_abc.csv
+│   │   ├── MG_Normal_P_total.csv
+│   │   └── MG_Normal_Q_total.csv
+│   │
+│   └── test/
+│       ├── Loadstep/
+│       ├── PhaseToPhase_NoGround/
+│       ├── SinglePhaseOpenCircuit/
+│       ├── SinglePhaseToGround/
+│       ├── ThreePhaseShortCircuit/
+│       └── ThreePhaseUnbalance/
+```
 
-│   └── faults/
+The `normal` directory contains the healthy operating-condition data used for PINN training.
 
-The `normal` folder should contain the normal operating condition datasets used for PINN training, while the `faults` folder should contain the fault and anomaly datasets used for evaluation and testing.
+The `test` directory contains all fault and disturbance scenarios used for model evaluation, including load-step changes, grounding faults, open-circuit faults, phase-to-phase faults, three-phase short circuits, and three-phase unbalance conditions.
 
-Users may place their own datasets following the same file naming convention and format described in this repository. The code will automatically load the corresponding files from these directories.
+Due to repository size limitations, the datasets are not included in this repository. Users should create the directories above and place the corresponding CSV files into each folder before running the project.
 
-For research collaboration or academic purposes, the original datasets can be provided upon reasonable request.
+Once the datasets are prepared, the training and detection scripts can be executed directly without modifying the source code.
